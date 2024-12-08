@@ -52,15 +52,15 @@ class Data(Subject):
 
 class BinaryViewer:
     def update(self, subject):
-        print(f"Binary: Subject '{subject.name}' has data " + Colors.OKGREEN + f"{bin(subject.data)}"+ Colors.ENDC)
+        print(Colors.OKGREEN + "Binary: " + Colors.ENDC + f"Subject '{subject.name}' has data " + Colors.OKGREEN + f"{bin(subject.data)}"+ Colors.ENDC)
 
 class OctalViewer:
     def update(self, subject):
-        print(f"Octal: Subject '{subject.name}' has data " + Colors.OKGREEN + f"{oct(subject.data)}"+ Colors.ENDC)
+        print(Colors.OKGREEN + "Octal: " + Colors.ENDC + f"Subject '{subject.name}' has data " + Colors.OKGREEN + f"{oct(subject.data)}"+ Colors.ENDC)
 
 class HexaViewer:
     def update(self, subject):
-        print(f"Hexadecimal: Subject '{subject.name}' has data " + Colors.OKGREEN + f"{hex(subject.data)}"+ Colors.ENDC)
+        print(Colors.OKGREEN + "Hexadecimal: " + Colors.ENDC + f"Subject '{subject.name}' has data " + Colors.OKGREEN + f"{hex(subject.data)}"+ Colors.ENDC)
 
 class Colors:
    
@@ -92,13 +92,13 @@ def main():
 
     while True:
         try:
-            print("\nOptions:")
+            print(Colors.BOLD + "\nOptions:" + Colors.ENDC)
             print(Colors.OKCYAN +"1."+ Colors.ENDC +" Enter a number")
             print(Colors.OKCYAN +"2."+ Colors.ENDC +" Create new object with all viewers attached")
-            print(Colors.OKCYAN +"3."+ Colors.ENDC +" Detach all viewers and delete current object")
+            print(Colors.OKCYAN +"3."+ Colors.ENDC +" Detach all viewers and delete the object")
             print(Colors.OKCYAN +"4."+ Colors.ENDC +" Exit")
 
-            choice = input("Select an option: ").strip()
+            choice = input(Colors.BOLD + "Select an option: " + Colors.ENDC).strip()
 
             if choice == '1':  # Enter a number
                 user_input = input("Please enter a number: ").strip()
@@ -124,7 +124,7 @@ def main():
                 else:
                     confirm = input("Are you sure you want to delete this object? (yes/no): ").strip().lower()
                     if confirm == 'yes':
-                        print("Detaching all viewers from current object.")
+                        print("Detaching all viewers from the object.")
                         for viewer in viewers.values():
                             obj.detach(viewer)
                         obj_name = obj.name  # Store name for confirmation
@@ -143,7 +143,7 @@ def main():
                 print(Colors.OKGREEN + "Thank you, Goodbye!" + Colors.ENDC)
                 break
             else:
-                print(Colors.WARNING + "Invalid option. Please try again." + Colors.ENDC)
+                print(Colors.WARNING + "Invalid option. Please try one of the options: 1, 2, 3 or 4." + Colors.ENDC)
         except ValueError:
             print(Colors.WARNING + "Invalid input. Please enter a valid integer." + Colors.ENDC)
 
